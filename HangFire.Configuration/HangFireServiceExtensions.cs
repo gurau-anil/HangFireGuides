@@ -18,11 +18,10 @@ namespace HangFire.Configuration
                 .UseRecommendedSerializerSettings()
                 .UseSqlServerStorage(hangFireConnectionString)); // Use SQL Server
 
-            // Add the processing server as a hosted service.  This starts Hangfire
-            // server within your ASP.NET Core application.  This is what *processes*
-            // the background jobs.
-
             services.AddTransient<IHangfireBackgroundService, HangfireBackgroundService>();
+
+            // Add the processing server as a hosted service.  This starts Hangfire
+            // server within your ASP.NET Core application.  This is what processes the background jobs.
             services.AddHangfireServer();
         }
 

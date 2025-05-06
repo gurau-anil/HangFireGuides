@@ -1,12 +1,11 @@
-﻿using Hangfire.BackgroundJob.Services;
+﻿using Hangfire.Services.Services;
 using HangFire.Configuration.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Hangfire.BackgroundJob.Controllers
+namespace Hangfire.Services.Controllers
 {
     //  A simple controller to trigger the background job
     [ApiController]
-    [Route("[controller]")] //  Route will be  /Log
     public class LogController : ControllerBase
     {
         private readonly ILoggingService _loggingService;
@@ -20,6 +19,7 @@ namespace Hangfire.BackgroundJob.Controllers
 
         //  Endpoint to trigger the logging job
         [HttpPost]
+        [Route("log")]
         public async Task<IActionResult> Log([FromBody] string message) // Take the log message from the body
         {
             _backgroundService.Enqueue(() => _loggingService.LogMessageAsync(message));

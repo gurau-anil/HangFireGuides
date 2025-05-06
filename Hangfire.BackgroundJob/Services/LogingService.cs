@@ -1,4 +1,4 @@
-﻿namespace Hangfire.BackgroundJob.Services
+﻿namespace Hangfire.Services.Services
 {
     public interface ILoggingService
     {

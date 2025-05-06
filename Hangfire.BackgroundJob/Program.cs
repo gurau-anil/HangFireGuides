@@ -1,4 +1,4 @@
-using Hangfire.BackgroundJob.Services;
+using Hangfire.Services.Services;
 using HangFire.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
