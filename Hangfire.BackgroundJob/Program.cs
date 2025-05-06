@@ -1,21 +1,9 @@
-using Hangfire;
 using Hangfire.BackgroundJob.Services;
+using HangFire.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Configure Hangfire
-// Database has to be created beforehand
-builder.Services.AddHangfire(configuration => configuration
-    .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
-    .UseSimpleAssemblyNameTypeSerializer()
-    .UseRecommendedSerializerSettings()
-    .UseSqlServerStorage(builder.Configuration.GetConnectionString("HangfireConnection"))); // Use SQL Server
-
-// Add the processing server as a hosted service.  This starts Hangfire
-// server within your ASP.NET Core application.  This is what *processes*
-// the background jobs.
-builder.Services.AddHangfireServer();
+builder.Services.AddHangFireServices(builder.Configuration.GetConnectionString("HangfireConnection")?? String.Empty);
 
 // Register our logging service for use with Dependency Injection
 builder.Services.AddTransient<ILoggingService, LoggingService>();
@@ -25,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -40,7 +28,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 // Enable the Hangfire Dashboard -  VERY IMPORTANT
-app.UseHangfireDashboard("/hangfire"); //  Make sure you can access it at /hangfire
+//  Make sure you can access it at /hangfire
+app.RegisterHangfireDashboardMiddleware("/hangfire");
 
 app.MapControllers();
 

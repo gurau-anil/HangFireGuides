@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hangfire.BackgroundJob", "Hangfire.BackgroundJob\Hangfire.BackgroundJob.csproj", "{CEAAD15E-1AC8-4F6F-B1C8-044572126801}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangFire.Services", "HangFire.Configuration\HangFire.Services.csproj", "{9CB67701-87D3-4216-9DAA-514715A55E2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CEAAD15E-1AC8-4F6F-B1C8-044572126801}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEAAD15E-1AC8-4F6F-B1C8-044572126801}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEAAD15E-1AC8-4F6F-B1C8-044572126801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CB67701-87D3-4216-9DAA-514715A55E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB67701-87D3-4216-9DAA-514715A55E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB67701-87D3-4216-9DAA-514715A55E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB67701-87D3-4216-9DAA-514715A55E2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
