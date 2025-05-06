@@ -24,10 +24,15 @@ namespace Hangfire.BackgroundJob.Controllers
         {
             _backgroundService.Enqueue(() => _loggingService.LogMessageAsync(message));
 
+            //// run a job after certain time
+            //_backgroundService.Schedule(() => _loggingService.LogMessageAsync(message), TimeSpan.FromMinutes(10));
+
+            //// run the Every day at 12:00 AM
+            //_backgroundService.AddRecurring("jobId",() => _loggingService.LogMessageAsync(message), "0 0 * * *");
+
             //  Important:  Return *immediately*.  Don't wait for the job.
             return Ok($"Log message \"{message}\" enqueued.  Check /hangfire dashboard for status.");
         }
-
 
     }
 }
